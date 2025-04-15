@@ -6,7 +6,6 @@ THIS=Makefile
 VERSION=20060623
 
 default:
-	$(MAKE) -C as68k/
 	$(MAKE) -f $(THIS) fe2obj
 	$(MAKE) -C src/
 
@@ -22,8 +21,11 @@ fe2:
 	$(MAKE) -f $(THIS) fe2obj
 	$(MAKE) -C src/
 
-fe2obj:
+fe2s: 
+	$(MAKE) -C as68k/
 	as68k/as68k --output-c fe2.s
+
+fe2obj: fe2.s.c
 	# this bit can be optimised because it is lots of small functions
 	$(CC) -DPART1 -O1 -fomit-frame-pointer -Wall -Wno-unused -s `sdl-config --cflags` -c fe2.s.c -o fe2.part1.o
 	# this can't unless you have shitloads of memory and a meaty

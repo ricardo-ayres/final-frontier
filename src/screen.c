@@ -31,7 +31,7 @@ BOOL bGrabMouse = FALSE;                          /* Grab the mouse cursor in th
 BOOL bInFullScreen = FALSE;
 
 /* new stuff */
-enum RENDERERS use_renderer = R_GL;
+enum RENDERERS use_renderer = R_OLD;
 /* mouse shown this frame? */
 int mouse_shown = 0;
 /* fe2 UI blits are done to old screen memory and copied to this texture. */
